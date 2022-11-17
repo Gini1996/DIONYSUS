@@ -19,14 +19,17 @@ while(controle == True):
  if(op == 1):
     Ini.ConectaBD()
     Ini.GerarTabelas()
+
     temLogin = Ini.ValidaUsuario(temLogin,validaAcessoPKLogin)
     validaSenha = Ini.ValidaSenha(validaSenha,validaAcessoPKSenha)
     liberacaoAcesso = Ini.ValidaCredencial(temLogin,validaSenha,liberacaoAcesso)
+
     Func.MenuFuncoes(liberacaoAcesso)
  elif(op == 2):
     Sob.Sobre()
  elif(op == 9):
-    controle = False
-    Ini.EncerraAplicacao()
+    controle = Ini.EncerraAplicacao(controle)
  else:
     print("Caractere invalido")
+
+

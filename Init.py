@@ -49,21 +49,55 @@ def GerarTabelas():
          constraint pk_login_sistema primary key(id)
      );"""
 
+     sqlTbFunc = """CREATE TABLE funcionarios
+     (
+         idfunc serial,
+         nome varchar(50),
+         sobrenome varchar(50),
+         cargo varchar(50),
+         mesAdmissao integer,
+         anoAdmissao integer,
+         constraint pk_funcionarios primary key(idfunc)
+     );"""
+
+     sqlTbEstoque = """CREATE TABLE estoque
+     (
+         idprod serial,
+         produto varchar(50),
+         perecivel varchar(1),
+         quantidade integer,
+         precoBase numeric(5,2),
+         precoVenda numeric(5,2),
+         constraint pk_estoque primary key(idprod)
+     );"""
+
+     sqlTbCompra = """CREATE TABLE compra
+     (
+         idcompra serial,
+         produto varchar(50),
+         fornecedor varchar(1),
+         quantidade integer,
+         constraint pk_compra primary key(idcompra)
+     );"""
+
      cur = con.cursor()
      cur.execute(sql)
+     cur.execute(sqlTbFunc)
+     cur.execute(sqlTbEstoque)
+     cur.execute(sqlTbCompra)
      
      sqlAddAdm = f"INSERT INTO login_sistema (usuario,senha,nome,sobrenome) values ('admin','admin','admin','admin') RETURNING id;"
      curAdd = con.cursor()
      curAdd.execute(sqlAddAdm)
-     con.commit()
+     con.commit()  
+     con.close() 
      print("+           Tabelas Geradas com sucesso!        +")
      print("-------------------------------------------------")
      print("\n")
-     
     except Exception as erro:  
-     print("+           Tabela e acesso já criados          +")
-     print("-------------------------------------------------")
-
+        print("+           Tabela e acesso já criados          +")
+        print("-------------------------------------------------")
+     
 def DroparTabelas():
     try:
      con = bd.connect(
@@ -74,11 +108,18 @@ def DroparTabelas():
      port="5432"
     )
 
-     drop = """DROP TABLE login_sistema"""
+     dropLogin = """DROP TABLE login_sistema"""
+     dropTbFunc = """DROP TABLE funcionarios"""
+     dropTbEstoque = """DROP TABLE estoque"""
+     dropTbCompra = """DROP TABLE compra"""
      
      cur = con.cursor()
-     cur.execute(drop)
+     cur.execute(dropLogin)
+     cur.execute(dropTbFunc)
+     cur.execute(dropTbEstoque)
+     cur.execute(dropTbCompra)
      con.commit()
+     con.close()
      print("Tabelas Excluidas com Sucesso!")
 
     except Exception as erro:
@@ -166,7 +207,9 @@ def ValidaCredencial(temLogin,validaSenha,liberacaoAcesso):
 
     return liberacaoAcesso
 
-def EncerraAplicacao():
+def EncerraAplicacao(controle):
+    controle = False
     print("-------------------------------------------------")
     print("+           Obrigado ate a proxima              +") 
     print("-------------------------------------------------")
+    return controle
