@@ -1,4 +1,5 @@
 import Init as Ini
+import Funcionario as Fun
 
 def MenuFuncoes(liberacaoAcesso):
     if liberacaoAcesso == 'S':
@@ -19,7 +20,7 @@ def MenuFuncoes(liberacaoAcesso):
      ctrlOp = int(input(""))
 
      if ctrlOp == 1:
-       print("AkiOH")
+       Fun.OpcoesFuncionario()
      elif ctrlOp == 2:
         print("AkiOH")
      elif ctrlOp == 3:
