@@ -4,6 +4,7 @@ import Estoque as Est
 import Compras as Cp
 import Reset as Rst
 import ExportaDados as Js
+import ImportaDados as Id
 
 def MenuFuncoes(liberacaoAcesso):
     if liberacaoAcesso == 'S':
@@ -33,7 +34,7 @@ def MenuFuncoes(liberacaoAcesso):
         Js.GerarJSONEstoque()
         Js.GerarJSONFuncionarios()
       elif ctrlOp == 5:
-         print("AkiOH")
+        Id.ImportaInfo()
       elif ctrlOp == 6:
          Rst.Reset()
       elif ctrlOp == 9:

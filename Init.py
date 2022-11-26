@@ -79,12 +79,23 @@ def GerarTabelas():
          quantidade integer,
          constraint pk_compra primary key(idcompra)
      );"""
+     
+     sqlTbReq = """CREATE TABLE req
+     (
+         idreq serial,
+         url varchar(255),
+         dtReq varchar(255),
+         server varchar(255),
+         tamanhoReq integer,
+         constraint pk_req primary key(idreq)
+     );"""
 
      cur = con.cursor()
      cur.execute(sql)
      cur.execute(sqlTbFunc)
      cur.execute(sqlTbEstoque)
      cur.execute(sqlTbCompra)
+     cur.execute(sqlTbReq)
      
      sqlAddAdm = f"INSERT INTO login_sistema (usuario,senha,nome,sobrenome) values ('admin','admin','admin','admin') RETURNING id;"
      curAdd = con.cursor()
@@ -112,12 +123,14 @@ def DroparTabelas():
      dropTbFunc = """DROP TABLE funcionarios"""
      dropTbEstoque = """DROP TABLE estoque"""
      dropTbCompra = """DROP TABLE compra"""
+     dropTbReq = """DROP TABLE req"""
      
      cur = con.cursor()
      cur.execute(dropLogin)
      cur.execute(dropTbFunc)
      cur.execute(dropTbEstoque)
      cur.execute(dropTbCompra)
+     cur.execute(dropTbReq)
      con.commit()
      con.close()
      print("Tabelas Excluidas com Sucesso!")
