@@ -35,6 +35,7 @@ def MenuFuncoes(liberacaoAcesso):
         Js.GerarJSONFuncionarios()
       elif ctrlOp == 5:
         Id.ImportaInfo()
+        Id.VisualizaDados()
       elif ctrlOp == 6:
          Rst.Reset()
       elif ctrlOp == 9:
