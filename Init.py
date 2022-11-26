@@ -75,7 +75,7 @@ def GerarTabelas():
      (
          idcompra serial,
          produto varchar(50),
-         fornecedor varchar(1),
+         fornecedor varchar(50),
          quantidade integer,
          constraint pk_compra primary key(idcompra)
      );"""
@@ -126,6 +126,9 @@ def DroparTabelas():
      print("Não existem tabelas para excluir")
 
 def ValidaUsuario(temLogin,validaAcessoPKLogin):
+    checaLogin = 0
+    tentativaLogin = 1
+
     try:
      con = bd.connect(
      database="Dionysus",
@@ -134,21 +137,26 @@ def ValidaUsuario(temLogin,validaAcessoPKLogin):
      host="localhost",
      port="5432"
     )
-     print("-------------------------------------------------")
-     login = input("Digite seu login:\n")
+     while(checaLogin < 3):
+      print("-------------------------------------------------")
+      login = input("Digite seu login:\n")
 
-     cur = con.cursor()
-     sqlValidaUsr = """SELECT * FROM login_sistema;"""
+      cur = con.cursor()
+      sqlValidaUsr = """SELECT * FROM login_sistema;"""
      
-     cur.execute(sqlValidaUsr)
-     exists_usr = cur.fetchall()
+      cur.execute(sqlValidaUsr)
+      exists_usr = cur.fetchall()
      
-     for row in exists_usr:
-      if login == row[1]:
-       temLogin = 'S'
-       validaAcessoPKLogin = row[0]
-      else:
-       temLogin = 'N'
+      for row in exists_usr:
+       if login == row[1]:
+        temLogin = 'S'
+        checaLogin = 10
+        validaAcessoPKLogin = row[0]
+       else:
+        temLogin = 'N'
+        checaLogin = checaLogin + 1   
+        print(f"Tentativa: {tentativaLogin} de 3")  
+        tentativaLogin = tentativaLogin + 1
 
     except Exception as erro:
      print("Erro, usuario incorreto")
@@ -194,7 +202,8 @@ def ValidaSenha(senhaValida,validaAcessoPKSenha):
         return senhaValida,validaAcessoPKSenha
 
 def ValidaCredencial(temLogin,validaSenha,liberacaoAcesso):
-    if temLogin == validaSenha:
+    validaAcesso = 'S'
+    if validaAcesso in temLogin and validaAcesso in validaSenha:
          print("-------------------------------------------------")
          print("+           LOGIN REALIZADO COM SUCESSO         +")
          print("-------------------------------------------------")
@@ -204,6 +213,7 @@ def ValidaCredencial(temLogin,validaSenha,liberacaoAcesso):
         print("+   ERRO, ENTRE EM CONTATO COM O SUPORTE        +")
         print("-------------------------------------------------")
         liberacaoAcesso = 'N'
+        TelaInicial()
 
     return liberacaoAcesso
 

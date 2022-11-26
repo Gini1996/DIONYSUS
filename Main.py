@@ -12,8 +12,10 @@ validaAcessoPKLogin = 0000
 validaAcessoPKSenha = 0000
 liberacaoAcesso = ''
 
+Ini.TelaInicial()
+
 while(controle == True):    
- Ini.TelaInicial()
+ 
  op = int(input(""))
 
  if(op == 1):
@@ -30,6 +32,8 @@ while(controle == True):
  elif(op == 9):
     controle = Ini.EncerraAplicacao(controle)
  else:
-    print("Caractere invalido")
+    print("-------------------------------------------------")
+    print("+               CARARCTERE INVALIDO             +")
+    print("-------------------------------------------------")
 
 
