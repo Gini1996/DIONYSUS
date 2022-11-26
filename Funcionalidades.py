@@ -3,6 +3,7 @@ import Funcionario as Fun
 import Estoque as Est
 import Compras as Cp
 import Reset as Rst
+import ExportaDados as Js
 
 def MenuFuncoes(liberacaoAcesso):
     if liberacaoAcesso == 'S':
@@ -27,7 +28,7 @@ def MenuFuncoes(liberacaoAcesso):
       elif ctrlOp == 3:
         Cp.OpcoesCompras()
       elif ctrlOp == 4:
-         print("AkiOH")
+        Js.GerarJSON()
       elif ctrlOp == 5:
          print("AkiOH")
       elif ctrlOp == 6:
