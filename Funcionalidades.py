@@ -28,7 +28,10 @@ def MenuFuncoes(liberacaoAcesso):
       elif ctrlOp == 3:
         Cp.OpcoesCompras()
       elif ctrlOp == 4:
-        Js.GerarJSON()
+        Js.GerarJSONLogin()
+        Js.GerarJSONCompra()
+        Js.GerarJSONEstoque()
+        Js.GerarJSONFuncionarios()
       elif ctrlOp == 5:
          print("AkiOH")
       elif ctrlOp == 6:

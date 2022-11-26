@@ -20,6 +20,7 @@ def Reset():
       liberacaoAcesso = Ini.ValidaCredencial(temLogin,validaSenha,liberacaoAcesso)
       if liberacaoAcesso == 'S':
          Ini.DroparTabelas()
+         Ini.TelaInicial()
       else:
         print("-------------------------------------------------")
         print("+          USUARIO NAO AUTORIZADO               +")

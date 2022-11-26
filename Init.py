@@ -66,8 +66,8 @@ def GerarTabelas():
          produto varchar(50),
          perecivel varchar(1),
          quantidade integer,
-         precoBase numeric(5,2),
-         precoVenda numeric(5,2),
+         precoBase integer,
+         precoVenda integer,
          constraint pk_estoque primary key(idprod)
      );"""
 
