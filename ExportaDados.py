@@ -37,6 +37,7 @@ def GerarJSONLogin():
       print(erro)
       print("+           Erro ao exportar dados                      +")
       print("---------------------------------------------------------")
+      Fun.MenuFuncoes(liberacaoAcesso='S')
 
 def GerarJSONCompra():
     try:
@@ -73,6 +74,7 @@ def GerarJSONCompra():
       print(erro)
       print("+           Erro ao exportar dados                       +")
       print("----------------------------------------------------------")
+      Fun.MenuFuncoes(liberacaoAcesso='S')
 
 def GerarJSONEstoque():
     try:
@@ -108,6 +110,7 @@ def GerarJSONEstoque():
       print(erro)
       print("+           Erro ao exportar dados                        +")
       print("-----------------------------------------------------------")
+      Fun.MenuFuncoes(liberacaoAcesso='S')
 
 def GerarJSONFuncionarios():
     try:
@@ -145,3 +148,4 @@ def GerarJSONFuncionarios():
       print(erro)
       print("+           Erro ao exportar dados                             +")
       print("----------------------------------------------------------------")
+      Fun.MenuFuncoes(liberacaoAcesso='S')

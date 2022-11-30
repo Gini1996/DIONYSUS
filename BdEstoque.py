@@ -21,7 +21,7 @@ def InserirEstoque():
      print("-------------------------------------------------")
      print("+  Digite a quantidade do produto:              +")
      print("-------------------------------------------------")
-     qtd = input("")
+     qtd = int(input(""))
      print("-------------------------------------------------")
      print("+  Digite o preco de custo:                     +")
      print("-------------------------------------------------")
